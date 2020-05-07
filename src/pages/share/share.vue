@@ -4,35 +4,35 @@
       <div class="download">
         <img class="download_img" src="../../assets/logo.png">
         <div class="download_info">
-          <i class="download_info_title">淘点钱</i>
-          <i class="download_info_des">超值精选商品，轻松获取佣金</i>
+          <label class="download_info_title">淘点钱</label>
+          <label class="download_info_des">超值精选商品，轻松获取佣金</label>
         </div>
-        <i class="download_btn" @click="download">APP下载</i>
+        <label class="download_btn" @click="download">APP下载</label>
       </div>
 
       <img class="pict" :src="goods.pict_url">
 
       <div class="title_coupon">
-        <i class="title_coupon_tt">
+        <label class="title_coupon_tt">
           {{goods.title}}
-        </i>
-        <i class="title_coupon_juan">
+        </label>
+        <label class="title_coupon_juan">
           ¥{{price_coupon}} 劵
-        </i>
+        </label>
       </div>
 
       <div class="price">
-        <i class="price_deal">
+        <label class="price_deal">
           ¥{{price_deal}}
-        </i>
-        <i class="price_final">
+        </label>
+        <label class="price_final">
           ¥{{price_final}}
-        </i>
-        <i class="price_commission" v-if="price_commision != '' && price_commision != null && price_commision != '0'">
+        </label>
+        <label class="price_commission" v-if="price_commision != '' && price_commision != null && price_commision != '0'">
           预估返佣 ¥{{price_commision}}
-        </i>
+        </label>
       </div>
-      <i class="buy_btn" @click="coupon">去购买</i>
+      <label class="buy_btn" @click="coupon">去购买</label>
     </div>
 
     <div class="dialog" v-if="showDialog" @click="hideDialog">
@@ -47,7 +47,7 @@
           <i>中da開</i>
         </div>
 
-        <i class="pop_copy_btn" @click="coupon" v-clipboard:copy="kou_lin">复制</i>
+        <label class="pop_copy_btn" @click="coupon" v-clipboard:copy="kou_lin">复制</label>
 
       </div>
       <div class="line"></div>
@@ -146,8 +146,8 @@
   }
 
   .download_img {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
   }
 
   .download_info {
@@ -158,11 +158,11 @@
   }
 
   .download_info_title {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .download_info_des {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     color: #444444;
   }
 
@@ -171,7 +171,7 @@
     height: 1.8rem;
     line-height: 1.8rem;
     background-color: #FF2C56;
-    font-size: 0.4rem;
+    font-size: 0.8rem;
     color: #ffffff;
     text-align: center;
     border-radius: 1rem;
@@ -179,7 +179,7 @@
 
   .pict {
     width: 100vw;
-    height: 100vw;
+    height: 80vw;
   }
 
   .title_coupon {
@@ -228,7 +228,7 @@
 
   .price_commission {
     color: #BE844E;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     background-color: #FFECCB;
     padding: 2px 5px;
   }
@@ -238,7 +238,7 @@
     height: 2.4rem;
     line-height: 2.4rem;
     background-color: #FF2C56;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #ffffff;
     text-align: center;
     border-radius: 1rem;
@@ -304,7 +304,7 @@
     height: 2.4rem;
     line-height: 2.4rem;
     background-color: #FF2C56;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #ffffff;
     text-align: center;
     border-radius: 1rem;
