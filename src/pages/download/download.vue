@@ -1,22 +1,43 @@
 <template>
   <div id="app">
-    <img src="../../assets/logo.png">
+
   </div>
 </template>
 
 <script>
-  import HelloWorld from '../../components/HelloWorld'
+  import http from "../../js/http.js";
 
   export default {
     name: 'Download',
-    components: {
-      HelloWorld
+    data() {
+      return {
+
+      }
+    },
+    created() {
+      window.location.href = "https://www.baidu.com";
+      this.requestData();
+    },
+    methods: {
+      requestData: function () {
+      },
+
+      download: function () {
+        window.location.href = "";
+      },
     }
   }
 </script>
 
 <style>
-  #app {
-
+  body {
+    margin: 0;
+    padding: 0;
   }
+
+  #app {
+    width: 100%;
+    height: 100%;
+  }
+
 </style>
