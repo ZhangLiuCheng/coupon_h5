@@ -3,8 +3,8 @@ import qs from 'qs'
 
 axios.defaults.timeout = 20000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = 'http://192.168.0.109:8090';
-// axios.defaults.baseURL = 'https://api.xbbvip.com';
+// axios.defaults.baseURL = 'http://192.168.0.109:8090';
+axios.defaults.baseURL = 'https://api.xbbvip.com';
 
 
 axios.interceptors.request.use((config) => {

@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
   <div id="app">
     <div class="content">
       <div class="download">
@@ -17,19 +17,19 @@
           {{goods.title}}
         </i>
         <i class="title_coupon_juan">
-          $0
+          ¥{{price_coupon}} 劵
         </i>
       </div>
 
       <div class="price">
         <i class="price_deal">
-          $100
+          ¥{{price_deal}}
         </i>
         <i class="price_final">
-          $150
+          ¥{{price_final}}
         </i>
-        <i class="price_commission">
-          $10
+        <i class="price_commission" v-if="price_commision != '' && price_commision != null && price_commision != '0'">
+          预估返佣 ¥{{price_commision}}
         </i>
       </div>
       <i class="buy_btn" @click="coupon">去购买</i>
@@ -39,19 +39,19 @@
 
       <div class="pop">
 
-        <div class="pop_koulin">asdf</div>
+        <div class="pop_koulin">{{kou_lin}}</div>
 
         <div class="pop_des">
           <i>復制文字 - 在</i>
-          <img class="pop_des_taobao" src="../../assets/taobao.png"></img>
+          <img class="pop_des_taobao" src="../../assets/taobao.png"/>
           <i>中da開</i>
         </div>
 
-        <i class="pop_copy_btn" @click="coupon">复制</i>
+        <i class="pop_copy_btn" @click="coupon" v-clipboard:copy="kou_lin">复制</i>
 
       </div>
       <div class="line"></div>
-      <img class="pop_close_btn" src="../../assets/close.png"></img>
+      <img class="pop_close_btn" src="../../assets/close.png"/>
     </div>
   </div>
 </template>
@@ -65,14 +65,37 @@
       return {
         goods: {},
         showDialog: false,
+        price_final: '',
+        price_deal: '',
+        price_coupon: '',
+        price_commision: '',
+        kou_lin: '',
       }
     },
     created() {
-      this.requestData();
+      try {
+        let url = window.location.href;
+        let cs_arr = url.split('?')[1].split('&');
+        let cs = {};
+        for (let i = 0; i < cs_arr.length; i++) {
+          let kv = cs_arr[i].split('=');
+          cs[kv[0]] = kv[1]
+        }
+        this.price_final = cs['pf'];
+        this.price_deal = cs['pd'];
+        this.price_coupon = cs['pc'];
+        this.price_commision = cs['ps'];
+        this.kou_lin = decodeURIComponent(cs['kl']);
+        this.requestData(cs['id']);
+
+      } catch (e) {
+        console.log("解析url参数失败：" + e)
+      }
     },
     methods: {
-      requestData: function () {
-        let params = {"id": "614507834887"};
+      requestData: function (id) {
+        // 614507834887
+        let params = {"id": id};
         http.fetchPost('/goods/detail', params).then((response) => {
           this.goods = response.data.data
           console.log("requestGoodsDetail::success", this.goods);
@@ -173,6 +196,14 @@
 
   .title_coupon_juan {
     margin-left: 1rem;
+    width: 3.3rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+    background: url("https://coupon118.oss-cn-shanghai.aliyuncs.com/h5/coupon_icon.png") no-repeat;
+    background-size: 100% 100%;
   }
 
   .price {
@@ -196,7 +227,10 @@
   }
 
   .price_commission {
-
+    color: #BE844E;
+    font-size: 0.6rem;
+    background-color: #FFECCB;
+    padding: 2px 5px;
   }
 
   .buy_btn {
@@ -240,13 +274,15 @@
   }
 
   .pop_koulin {
+    display: inline-block;
     margin-top: 0.6rem;
     width: 12rem;
     height: 2.5rem;
     line-height: 2.5rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     text-align: center;
-    background:url("https://coupon118.oss-cn-shanghai.aliyuncs.com/h5/bg_koulin.png") no-repeat 100% 100%
+    background: url("https://coupon118.oss-cn-shanghai.aliyuncs.com/h5/bg_koulin.png") no-repeat;
+    background-size: 100% 100%;
   }
 
   .pop_des {
