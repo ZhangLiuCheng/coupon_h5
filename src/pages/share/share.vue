@@ -106,7 +106,7 @@
       },
 
       download: function () {
-        window.location.href = "http://192.168.0.109:8080/download.html";
+        window.location.href = "https://h5.xbbvip.com/download.html";
       },
 
       coupon: function () {
@@ -179,7 +179,7 @@
 
   .pict {
     width: 100vw;
-    height: 80vw;
+    height: 100vw;
   }
 
   .title_coupon {
@@ -196,7 +196,7 @@
 
   .title_coupon_juan {
     margin-left: 1rem;
-    width: 3.3rem;
+    width: 5rem;
     height: 1.5rem;
     line-height: 1.5rem;
     color: white;
