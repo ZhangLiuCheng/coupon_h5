@@ -106,7 +106,7 @@
       },
 
       download: function () {
-        window.location.href = "https://h5.xbbvip.com/download.html";
+        window.location.href = "https://a.app.qq.com/o/simple.jsp?pkgname=com.boiling.point.coupon";
       },
 
       coupon: function () {

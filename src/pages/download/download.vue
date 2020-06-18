@@ -5,14 +5,12 @@
 
     <a class="android" href="https://coupon118.oss-cn-shanghai.aliyuncs.com/h5/app-1.0.apk">安卓下载地址</a>
 
-    <a class="ios" href="" @click="ios">苹果下载地址</a>
+    <a class="ios" href="https://apps.apple.com/us/app/淘点钱/id1510301072?l=zh&ls=1" @click="ios">苹果下载地址</a>
 
   </div>
 </template>
 
 <script>
-  import http from "../../js/http.js";
-
   export default {
     name: 'Download',
     data() {
@@ -31,7 +29,7 @@
       },
 
       ios: function () {
-        alert("苹果正在开发中，敬请期待")
+        // alert("苹果正在开发中，敬请期待")
       }
     }
   }
