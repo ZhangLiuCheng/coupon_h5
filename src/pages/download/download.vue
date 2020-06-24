@@ -18,10 +18,10 @@
     },
     created() {
       // window.location.href = "https://www.baidu.com";
-      this.requestData();
+      this.requestWithdrawList();
     },
     methods: {
-      requestData: function () {
+      requestWithdrawList: function () {
       },
 
       download: function () {
