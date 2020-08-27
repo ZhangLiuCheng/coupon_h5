@@ -52,7 +52,10 @@
     },
 
     created() {
-
+      let username = localStorage.getItem("username");
+      let pwd = localStorage.getItem("password");
+      this.account = username;
+      this.password = pwd;
     },
 
     methods: {
@@ -87,6 +90,8 @@
           return;
         }
         if (this.account == "zhangliucheng" && this.password == "584670") {
+          localStorage.setItem("username", "zhangliucheng");
+          localStorage.setItem("password", "584670");
           this.showDialog = false;
           this.requestWithdrawList();
         }
